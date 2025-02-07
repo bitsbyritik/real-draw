@@ -5,6 +5,8 @@ import * as dotenv from "dotenv";
 import router from "./routes/routes";
 dotenv.config();
 
+app.use(express.json());
+
 const PORT = process.env.PORT || 3001;
 
 app.use("/v1", router);
