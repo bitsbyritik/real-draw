@@ -39,7 +39,11 @@ export const registerUser = async (req: Request, res: Response) => {
       },
     });
 
-    const token = jwt.sign(newUser.id, JWT_SECRET);
+    const payload = { 
+      id: newUser.id
+    }
+
+    const token = jwt.sign(payload, JWT_SECRET);
 
     res.status(200).json({
       message: "Signed up successfully!",
@@ -69,7 +73,7 @@ export const loginUser = async (req: Request, res: Response) => {
     const existingUser = await prisma.user.findUnique({
       where: {
         email: validateData.data?.email,
-      },
+      }
     });
 
     if (!existingUser?.password) {
@@ -93,8 +97,12 @@ export const loginUser = async (req: Request, res: Response) => {
       });
     }
 
-    const token = jwt.sign(existingUser.id, JWT_SECRET);
+    const payload = {   
+      id: existingUser.id
+    }
 
+    const token = jwt.sign(payload, JWT_SECRET);
+    
     res.status(200).json({
       message: "Signed in successfully",
       token: token,
