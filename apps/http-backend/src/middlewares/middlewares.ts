@@ -1,10 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { JWT_SECRET } from "@repo/backend-common/config";
+import { TokenPayload } from "@repo/backend-common/interface";
 
-interface TokenPayload extends JwtPayload {
-  id: string;
-}
 
 export const middleware = (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "exports": {
-    "./config": "./src/config.ts"
+    "./config": "./src/config.ts",
+    "./interface":"./src/interface.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@types/jsonwebtoken": "^9.0.8"
   },
   "dependencies": {
-    "@types/node": "^22.10.5"
+    "@types/node": "^22.10.5",
+    "jsonwebtoken": "^9.0.2"
   },
   "keywords": [],
   "author": "",
